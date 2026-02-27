@@ -1,61 +1,78 @@
-# Projeto 3 — Automação de Backup
+Projeto 3 — Automação de Backup
 
-Script em Python que copia arquivos automaticamente de uma pasta para outra e gera **logs de execução** com data e hora.
+Este projeto é um script em Python que faz backup automático de arquivos entre pastas e registra tudo em logs com data e hora.
 
-## Funcionalidades
+O que ele faz
 
-- **Cópia automática** — Copia todos os arquivos da pasta origem para o destino (mantendo subpastas).
-- **Logs de execução** — Cada execução gera um arquivo de log em `logs/` com timestamp, arquivos copiados e erros (se houver).
-- **Uso prático** — Pode ser agendado no Windows (Agendador de Tarefas) para backup diário ou semanal.
+Copia arquivos automaticamente
+Move todos os arquivos de uma pasta para outra, mantendo a estrutura de subpastas.
 
-## Demonstra
+Gera logs detalhados
+Cada execução cria um log com horário, arquivos copiados e possíveis erros.
 
-- ✔️ **Automação real** — Script pronto para rodar manualmente ou agendado.
-- ✔️ **Uso prático para empresas** — Backup de pastas de trabalho, documentos ou dados.
+Pode rodar sozinho
+Dá para agendar no Windows (Agendador de Tarefas) e deixar backups diários ou semanais automatizados.
 
-## Como rodar
+O que esse projeto demonstra
 
-### Opção 1: Rodar com pastas de exemplo (primeira vez)
+Automação prática de verdade (não é só teoria)
 
-Na primeira execução, o script cria a pasta `exemplo_origem` com arquivos de teste e copia para `backup_destino`:
+Algo útil no dia a dia de empresas
 
-```bash
+Organização e rastreabilidade com logs
+
+Como usar
+Opção 1 — Rodar pela primeira vez (modo exemplo)
+
+Na primeira execução, o script cria uma pasta exemplo_origem com arquivos de teste e gera o backup em backup_destino.
+
 cd projeto3_backup
 python backup.py
-```
 
-Ou use os atalhos:
+Também dá para usar os atalhos:
 
-- **Windows (PowerShell):** dê duplo clique em `rodar.ps1` ou execute `.\rodar.ps1`
-- **Windows (CMD):** dê duplo clique em `rodar.bat` ou execute `rodar.bat`
+Windows (PowerShell): duplo clique em rodar.ps1 ou execute .\rodar.ps1
 
-### Opção 2: Especificar origem e destino
+Windows (CMD): duplo clique em rodar.bat ou execute rodar.bat
 
-```bash
+Opção 2 — Definir origem e destino
 python backup.py "C:\Pasta\Origem" "D:\Backups\Destino"
-```
-
-### Opção 3: Só mudar a pasta de logs
-
-```bash
+Opção 3 — Personalizar onde salvar os logs
 python backup.py "C:\Origem" "D:\Backup" --logs "C:\LogsBackup"
-```
+Onde ficam os logs
 
-## Onde ficam os logs
+Por padrão: dentro da pasta logs/ do projeto
 
-- Por padrão: pasta `logs/` dentro do projeto.
-- Cada execução gera um arquivo: `backup_AAAA-MM-DD_HH-MM-SS.log`.
-- O log mostra: data/hora, cada arquivo copiado e um resumo (quantidade copiada e erros).
+Nome do arquivo: backup_AAAA-MM-DD_HH-MM-SS.log
 
-## Agendar no Windows (backup automático)
+Cada log mostra:
 
-1. Abra o **Agendador de Tarefas** (Taskschd.msc).
-2. Criar Tarefa Básica → Nome: "Backup automático".
-3. Disparo: Diariamente (ou semanalmente), no horário desejado.
-4. Ação: Iniciar um programa.
-5. Programa: `python` (ou caminho completo do `python.exe`).
-6. Argumentos: `"C:\caminho\projeto3_backup\backup.py" "C:\Origem" "D:\Backup"`.
-7. Iniciar em: `C:\caminho\projeto3_backup`.
+Data e hora da execução
 
-Assim o backup roda sozinho e os logs ficam em `logs/`.
+Arquivos copiados
 
+Resumo final (quantidade e erros, se houver)
+
+Como automatizar no Windows
+
+Você pode deixar o backup rodando sozinho com o Agendador de Tarefas:
+
+Abra o Agendador de Tarefas (taskschd.msc)
+
+Clique em Criar Tarefa Básica
+
+Nome: Backup automático
+
+Escolha quando rodar (diário ou semanal)
+
+Ação: Iniciar um programa
+
+Programa: python (ou caminho completo do python.exe)
+
+Argumentos:
+"C:\caminho\projeto3_backup\backup.py" "C:\Origem" "D:\Backup"
+
+Campo Iniciar em:
+C:\caminho\projeto3_backup
+
+Pronto — o backup roda sozinho e os logs ficam salvos para consulta.
